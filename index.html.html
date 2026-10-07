@@ -1,0 +1,590 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Desi Oven | Baked with love • Desi at heart</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        bakeryDark: '#121212',
+                        bakeryCard: '#1E1B18',
+                        goldAccent: '#D4AF37',
+                        amberWarm: '#FF8C00',
+                        terracotta: '#CC5500',
+                        creamText: '#F5F5DC'
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        serif: ['Playfair Display', 'serif']
+                    }
+                }
+            }
+        }
+    </script>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet">
+    <!-- FontAwesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        body {
+            background-color: #121212;
+            color: #F5F5DC;
+            font-family: 'Inter', sans-serif;
+        }
+        .gold-gradient-text {
+            background: linear-gradient(135deg, #FFD700 0%, #D4AF37 50%, #FF8C00 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .hero-bg {
+            background: radial-gradient(circle at center, #261f1a 0%, #121212 80%);
+        }
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #121212;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #D4AF37;
+            border-radius: 4px;
+        }
+    </style>
+</head>
+<body class="bg-bakeryDark text-creamText selection:bg-amber-600 selection:text-white">
+
+    <header class="fixed top-0 left-0 right-0 z-50 bg-bakeryDark/90 backdrop-blur-md border-b border-amber-900/30">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+            <a href="#" class="flex items-center gap-3">
+                <div class="w-10 h-10 rounded-full bg-gradient-to-tr from-amber-700 to-amber-500 flex items-center justify-center border border-goldAccent/50 shadow-lg shadow-amber-900/30">
+                    <i class="fa-solid fa-fire text-bakeryDark text-lg"></i>
+                </div>
+                <div>
+                    <span class="font-serif text-xl sm:text-2xl font-bold tracking-wider gold-gradient-text">DESI OVEN</span>
+                    <span class="block text-[10px] tracking-widest text-amber-500/80 uppercase">Baked with love</span>
+                </div>
+            </a>
+            
+            <nav class="hidden md:flex items-center gap-8 text-sm font-medium">
+                <a href="#about" class="hover:text-goldAccent transition-colors">Our Story</a>
+                <a href="#menu" class="hover:text-goldAccent transition-colors">Artisanal Menu</a>
+                <a href="#specialty" class="hover:text-goldAccent transition-colors">100% Veg & Fresh</a>
+                <a href="#reviews" class="hover:text-goldAccent transition-colors">Reviews</a>
+            </nav>
+
+            <div class="flex items-center gap-4">
+                <a href="tel:6205038791" class="hidden sm:inline-flex items-center gap-2 text-amber-400 font-medium text-sm">
+                    <i class="fa-solid fa-phone"></i> 6205038791
+                </a>
+                <button onclick="openOrderModal()" class="bg-gradient-to-r from-amber-600 to-amber-500 hover:from-amber-500 hover:to-amber-400 text-bakeryDark font-semibold px-5 py-2.5 rounded-full shadow-lg shadow-amber-900/40 transition-all transform hover:scale-105 active:scale-95 text-sm">
+                    <i class="fa-solid fa-bag-shopping mr-2"></i> Order Now
+                </button>
+                <button onclick="toggleMobileMenu()" class="md:hidden text-creamText text-2xl focus:outline-none">
+                    <i class="fa-solid fa-bars" id="menuIcon"></i>
+                </button>
+            </div>
+        </div>
+
+        <div id="mobileMenu" class="hidden md:hidden bg-bakeryCard border-b border-amber-900/30 px-4 pt-2 pb-6 space-y-3">
+            <a href="#about" onclick="toggleMobileMenu()" class="block py-2 hover:text-goldAccent">Our Story</a>
+            <a href="#menu" onclick="toggleMobileMenu()" class="block py-2 hover:text-goldAccent">Artisanal Menu</a>
+            <a href="#specialty" onclick="toggleMobileMenu()" class="block py-2 hover:text-goldAccent">100% Veg & Fresh</a>
+            <a href="#reviews" onclick="toggleMobileMenu()" class="block py-2 hover:text-goldAccent">Reviews</a>
+            <div class="pt-2 border-t border-amber-900/30">
+                <a href="tel:6205038791" class="block py-2 text-amber-400 font-medium"><i class="fa-solid fa-phone mr-2"></i> Call: 6205038791</a>
+            </div>
+        </div>
+    </header>
+
+    <section class="relative min-h-screen hero-bg flex items-center justify-center pt-28 pb-16 px-4 overflow-hidden">
+        <div class="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-amber-600/10 rounded-full blur-3xl pointer-events-none"></div>
+
+        <div class="max-w-7xl mx-auto w-full grid grid-cols-1 lg:grid-cols-12 gap-12 items-center relative z-10">
+            <div class="lg:col-span-7 space-y-6 text-center lg:text-left">
+                <div class="inline-flex items-center gap-2 bg-amber-950/60 border border-amber-600/40 px-4 py-1.5 rounded-full text-xs sm:text-sm text-amber-300 font-medium">
+                    <i class="fa-solid fa-fire text-amber-400"></i> Desi Swad, Har Bite Mein Mithaas
+                </div>
+                
+                <h1 class="font-serif text-4xl sm:text-6xl lg:text-7xl font-bold tracking-tight leading-tight">
+                    Har Occasion Ko <span class="gold-gradient-text">Banaye Special</span>
+                </h1>
+                
+                <p class="text-gray-300 text-base sm:text-lg max-w-2xl mx-auto lg:mx-0 font-light leading-relaxed">
+                    Freshly baked wheat cookies, rich brownies, tutti fruity cakes, and royal dry fruit cakes crafted with 100% vegetarian goodness and authentic hearth warmth.
+                </p>
+
+                <div class="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4 pt-4">
+                    <button onclick="openOrderModal()" class="w-full sm:w-auto bg-gradient-to-r from-amber-600 to-terracotta hover:from-amber-500 hover:to-amber-600 text-white font-medium px-8 py-4 rounded-xl shadow-xl shadow-amber-900/30 transition-all flex items-center justify-center gap-3">
+                        <span>Explore Full Menu</span>
+                        <i class="fa-solid fa-arrow-right"></i>
+                    </button>
+                    <a href="tel:6205038791" class="w-full sm:w-auto bg-bakeryCard hover:bg-amber-950/40 border border-amber-900/50 text-creamText px-8 py-4 rounded-xl transition-all flex items-center justify-center gap-2">
+                        <i class="fa-solid fa-phone text-amber-500"></i> Call 6205038791
+                    </a>
+                </div>
+
+                <div class="grid grid-cols-3 gap-4 pt-8 border-t border-amber-900/30 max-w-lg mx-auto lg:mx-0 text-center lg:text-left">
+                    <div>
+                        <span class="block font-serif text-2xl sm:text-3xl font-bold gold-gradient-text">100%</span>
+                        <span class="text-xs text-gray-400">Veg & Hygienic</span>
+                    </div>
+                    <div>
+                        <span class="block font-serif text-2xl sm:text-3xl font-bold gold-gradient-text">Fresh</span>
+                        <span class="text-xs text-gray-400">Baked Daily</span>
+                    </div>
+                    <div>
+                        <span class="block font-serif text-2xl sm:text-3xl font-bold gold-gradient-text">Artisanal</span>
+                        <span class="text-xs text-gray-400">Oven Crafted</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Hero Feature Card with User Cookie Photo -->
+            <div class="lg:col-span-5 flex justify-center">
+                <div class="relative w-full max-w-md bg-bakeryCard border border-amber-900/40 rounded-3xl p-6 shadow-2xl shadow-black/80 overflow-hidden">
+                    <div class="absolute -top-3 -right-3 bg-gradient-to-r from-amber-500 to-terracotta text-bakeryDark text-xs font-bold px-3 py-1 rounded-full shadow-md uppercase tracking-wider z-10">
+                        100% Veg • Fresh & Hygienic
+                    </div>
+                    
+                    <div class="rounded-2xl overflow-hidden mb-6 bg-amber-950/30 h-64 relative border border-amber-900/20 flex items-center justify-center">
+                        <img src="image_3.png" alt="Desi Oven Branded Cookies" class="w-full h-full object-cover transform hover:scale-105 transition-transform duration-500" onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1558961363-fa8fdf82db35?auto=format&fit=crop&w=600&q=80';">
+                        <div class="absolute inset-0 bg-gradient-to-t from-bakeryDark/80 via-transparent to-transparent flex items-end p-4">
+                            <div>
+                                <span class="text-xs text-amber-400 font-medium">Signature Packaging & Bakes</span>
+                                <h3 class="font-serif text-lg font-bold text-creamText">Freshly Baked with Branded Paper</h3>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="space-y-4">
+                        <div class="flex items-center justify-between text-sm">
+                            <span class="text-gray-400">Featured Pack:</span>
+                            <span class="font-medium text-amber-300">250gms / 500gms / 1kg</span>
+                        </div>
+                        <div class="flex items-center justify-between text-sm">
+                            <span class="text-gray-400">Starting From:</span>
+                            <span class="font-serif text-xl font-bold gold-gradient-text">₹200</span>
+                        </div>
+                        <div class="pt-4 border-t border-amber-900/30 flex items-center justify-between">
+                            <span class="text-xs text-amber-500"><i class="fa-solid fa-phone mr-1"></i> Order Now</span>
+                            <button onclick="openOrderModal('Wheat Cookies')" class="bg-amber-600 hover:bg-amber-500 text-bakeryDark font-semibold px-4 py-2 rounded-lg text-sm transition-all">
+                                Quick Order
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="menu" class="py-20 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
+        <div class="flex flex-col md:flex-row md:items-end justify-between mb-12">
+            <div>
+                <span class="text-amber-500 text-xs font-bold tracking-widest uppercase">Desi Swad, Har Bite Mein Mithaas</span>
+                <h2 class="font-serif text-3xl sm:text-5xl font-bold mt-1">Our Featured Menu</h2>
+            </div>
+            <p class="text-gray-400 text-sm max-w-md mt-4 md:mt-0">
+                Freshly baked every morning. 100% vegetarian, prepared with premium ingredients and traditional warmth.
+            </p>
+        </div>
+
+        <div class="flex flex-wrap gap-3 mb-10">
+            <button onclick="filterMenu('all')" class="menu-btn active-tab bg-amber-600 text-bakeryDark font-medium px-5 py-2 rounded-full text-sm transition-all">All Items</button>
+            <button onclick="filterMenu('cookies')" class="menu-btn bg-bakeryCard border border-amber-900/40 text-creamText hover:border-amber-600 font-medium px-5 py-2 rounded-full text-sm transition-all">Cookies</button>
+            <button onclick="filterMenu('cakes')" class="menu-btn bg-bakeryCard border border-amber-900/40 text-creamText hover:border-amber-600 font-medium px-5 py-2 rounded-full text-sm transition-all">Cakes & Brownies</button>
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8" id="menuGrid">
+            
+            <!-- Item 1: Wheat Cookies -->
+            <div class="menu-item bg-bakeryCard border border-amber-900/30 rounded-2xl overflow-hidden flex flex-col justify-between group" data-category="cookies">
+                <div class="p-6 space-y-4">
+                    <div class="flex items-center justify-between">
+                        <span class="bg-amber-950/80 text-amber-300 text-xs px-3 py-1 rounded-full border border-amber-600/30 font-medium">100% Veg Cookie</span>
+                        <span class="font-serif font-bold text-lg gold-gradient-text">₹200 <span class="text-xs text-gray-400 font-normal">(250gms)</span></span>
+                    </div>
+                    <h3 class="font-serif text-xl font-bold group-hover:text-amber-400 transition-colors">Wheat Cookies</h3>
+                    <p class="text-sm text-gray-400">Traditional wholesome wheat cookies baked to golden perfection. Crisp, buttery, and perfect for your tea-time.</p>
+                </div>
+                <div class="px-6 pb-6 pt-2 border-t border-amber-900/20 flex items-center justify-between">
+                    <span class="text-xs text-amber-500/80"><i class="fa-solid fa-circle-check mr-1"></i> Fresh Today</span>
+                    <button onclick="openOrderModal('Wheat Cookies (₹200 / 250gms)')" class="bg-amber-600/20 hover:bg-amber-600 text-amber-300 hover:text-bakeryDark border border-amber-600/50 text-xs font-semibold px-4 py-2 rounded-lg transition-all">
+                        Order Now
+                    </button>
+                </div>
+            </div>
+
+            <!-- Item 2: Wheat Oats Cookies -->
+            <div class="menu-item bg-bakeryCard border border-amber-900/30 rounded-2xl overflow-hidden flex flex-col justify-between group" data-category="cookies">
+                <div class="p-6 space-y-4">
+                    <div class="flex items-center justify-between">
+                        <span class="bg-amber-950/80 text-amber-300 text-xs px-3 py-1 rounded-full border border-amber-600/30 font-medium">100% Veg Cookie</span>
+                        <span class="font-serif font-bold text-lg gold-gradient-text">₹240 <span class="text-xs text-gray-400 font-normal">(250gms)</span></span>
+                    </div>
+                    <h3 class="font-serif text-xl font-bold group-hover:text-amber-400 transition-colors">Wheat Oats Cookies</h3>
+                    <p class="text-sm text-gray-400">Nutritious oats combined with whole wheat for a hearty, fiber-rich snack that satisfies every sweet craving.</p>
+                </div>
+                <div class="px-6 pb-6 pt-2 border-t border-amber-900/20 flex items-center justify-between">
+                    <span class="text-xs text-amber-500/80"><i class="fa-solid fa-circle-check mr-1"></i> Fresh Today</span>
+                    <button onclick="openOrderModal('Wheat Oats Cookies (₹240 / 250gms)')" class="bg-amber-600/20 hover:bg-amber-600 text-amber-300 hover:text-bakeryDark border border-amber-600/50 text-xs font-semibold px-4 py-2 rounded-lg transition-all">
+                        Order Now
+                    </button>
+                </div>
+            </div>
+
+            <!-- Item 3: Chocolate Cookies -->
+            <div class="menu-item bg-bakeryCard border border-amber-900/30 rounded-2xl overflow-hidden flex flex-col justify-between group" data-category="cookies">
+                <div class="p-6 space-y-4">
+                    <div class="flex items-center justify-between">
+                        <span class="bg-amber-950/80 text-amber-300 text-xs px-3 py-1 rounded-full border border-amber-600/30 font-medium">100% Veg Cookie</span>
+                        <span class="font-serif font-bold text-lg gold-gradient-text">₹280 <span class="text-xs text-gray-400 font-normal">(250gms)</span></span>
+                    </div>
+                    <h3 class="font-serif text-xl font-bold group-hover:text-amber-400 transition-colors">Chocolate Cookies</h3>
+                    <p class="text-sm text-gray-400">Rich, decadent cocoa cookies loaded with chocolate chips for true chocolate lovers. Crispy outside, tender inside.</p>
+                </div>
+                <div class="px-6 pb-6 pt-2 border-t border-amber-900/20 flex items-center justify-between">
+                    <span class="text-xs text-amber-500/80"><i class="fa-solid fa-circle-check mr-1"></i> Fresh Today</span>
+                    <button onclick="openOrderModal('Chocolate Cookies (₹280 / 250gms)')" class="bg-amber-600/20 hover:bg-amber-600 text-amber-300 hover:text-bakeryDark border border-amber-600/50 text-xs font-semibold px-4 py-2 rounded-lg transition-all">
+                        Order Now
+                    </button>
+                </div>
+            </div>
+
+            <!-- Item 4: Brownie -->
+            <div class="menu-item bg-bakeryCard border border-amber-900/30 rounded-2xl overflow-hidden flex flex-col justify-between group" data-category="cakes">
+                <div class="p-6 space-y-4">
+                    <div class="flex items-center justify-between">
+                        <span class="bg-amber-950/80 text-amber-300 text-xs px-3 py-1 rounded-full border border-amber-600/30 font-medium">100% Veg Brownie</span>
+                        <div class="text-right">
+                            <span class="font-serif font-bold text-base gold-gradient-text block">₹650 <span class="text-xs text-gray-400 font-normal">(500g)</span></span>
+                            <span class="font-serif font-bold text-base gold-gradient-text block">₹1200 <span class="text-xs text-gray-400 font-normal">(1kg)</span></span>
+                        </div>
+                    </div>
+                    <h3 class="font-serif text-xl font-bold group-hover:text-amber-400 transition-colors">Brownie</h3>
+                    <p class="text-sm text-gray-400">Fudgy, rich chocolate brownies drizzled with luscious chocolate syrup. Pure indulgence in every bite.</p>
+                </div>
+                <div class="px-6 pb-6 pt-2 border-t border-amber-900/20 flex items-center justify-between">
+                    <span class="text-xs text-amber-500/80"><i class="fa-solid fa-circle-check mr-1"></i> Fresh Today</span>
+                    <button onclick="openOrderModal('Brownie (₹650/500g, ₹1200/1kg)')" class="bg-amber-600/20 hover:bg-amber-600 text-amber-300 hover:text-bakeryDark border border-amber-600/50 text-xs font-semibold px-4 py-2 rounded-lg transition-all">
+                        Order Now
+                    </button>
+                </div>
+            </div>
+
+            <!-- Item 5: Tuty Fruity Cake -->
+            <div class="menu-item bg-bakeryCard border border-amber-900/30 rounded-2xl overflow-hidden flex flex-col justify-between group" data-category="cakes">
+                <div class="p-6 space-y-4">
+                    <div class="flex items-center justify-between">
+                        <span class="bg-amber-950/80 text-amber-300 text-xs px-3 py-1 rounded-full border border-amber-600/30 font-medium">100% Veg Cake</span>
+                        <div class="text-right">
+                            <span class="font-serif font-bold text-base gold-gradient-text block">₹550 <span class="text-xs text-gray-400 font-normal">(500g)</span></span>
+                            <span class="font-serif font-bold text-base gold-gradient-text block">₹1050 <span class="text-xs text-gray-400 font-normal">(1kg)</span></span>
+                        </div>
+                    </div>
+                    <h3 class="font-serif text-xl font-bold group-hover:text-amber-400 transition-colors">Tuty Fruity Cake</h3>
+                    <p class="text-sm text-gray-400">Classic nostalgic tea cake loaded with colorful tutti frutti bits. Fluffy, moist, and loved by all ages.</p>
+                </div>
+                <div class="px-6 pb-6 pt-2 border-t border-amber-900/20 flex items-center justify-between">
+                    <span class="text-xs text-amber-500/80"><i class="fa-solid fa-circle-check mr-1"></i> Fresh Today</span>
+                    <button onclick="openOrderModal('Tuty Fruity Cake (₹550/500g, ₹1050/1kg)')" class="bg-amber-600/20 hover:bg-amber-600 text-amber-300 hover:text-bakeryDark border border-amber-600/50 text-xs font-semibold px-4 py-2 rounded-lg transition-all">
+                        Order Now
+                    </button>
+                </div>
+            </div>
+
+            <!-- Item 6: Dry Fruit Cake -->
+            <div class="menu-item bg-bakeryCard border border-amber-900/30 rounded-2xl overflow-hidden flex flex-col justify-between group" data-category="cakes">
+                <div class="p-6 space-y-4">
+                    <div class="flex items-center justify-between">
+                        <span class="bg-amber-950/80 text-amber-300 text-xs px-3 py-1 rounded-full border border-amber-600/30 font-medium">100% Veg Cake</span>
+                        <div class="text-right">
+                            <span class="font-serif font-bold text-base gold-gradient-text block">₹600 <span class="text-xs text-gray-400 font-normal">(500g)</span></span>
+                            <span class="font-serif font-bold text-base gold-gradient-text block">₹1150 <span class="text-xs text-gray-400 font-normal">(1kg)</span></span>
+                        </div>
+                    </div>
+                    <h3 class="font-serif text-xl font-bold group-hover:text-amber-400 transition-colors">Dry Fruit Cake</h3>
+                    <p class="text-sm text-gray-400">Luxurious loaf cake packed with premium almonds, cashews, raisins, and assorted dry fruits. Perfect gifting treat!</p>
+                </div>
+                <div class="px-6 pb-6 pt-2 border-t border-amber-900/20 flex items-center justify-between">
+                    <span class="text-xs text-amber-500/80"><i class="fa-solid fa-circle-check mr-1"></i> Fresh Today</span>
+                    <button onclick="openOrderModal('Dry Fruit Cake (₹600/500g, ₹1150/1kg)')" class="bg-amber-600/20 hover:bg-amber-600 text-amber-300 hover:text-bakeryDark border border-amber-600/50 text-xs font-semibold px-4 py-2 rounded-lg transition-all">
+                        Order Now
+                    </button>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <section id="about" class="py-20 bg-bakeryCard/60 border-t border-amber-900/20">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+            <div class="lg:col-span-6 space-y-6">
+                <span class="text-amber-500 text-xs font-bold tracking-widest uppercase">Our Heritage & Craft</span>
+                <h2 class="font-serif text-3xl sm:text-5xl font-bold leading-tight">Desi Swad, Har Bite Mein <span class="gold-gradient-text">Mithaas</span></h2>
+                <p class="text-gray-300 font-light text-base leading-relaxed">
+                    At Desi Oven, every occasion becomes special with our authentic range of cookies, brownies, and traditional cakes. We are 100% vegetarian, ensuring absolute freshness and hygiene in every batch.
+                </p>
+                <p class="text-gray-300 font-light text-base leading-relaxed">
+                    From crispy wheat and oats cookies to our signature dry fruit cakes loaded with almonds and cashews, we bring generations of baking love straight to your table.
+                </p>
+                <div class="pt-2">
+                    <a href="tel:6205038791" class="inline-flex items-center gap-3 bg-amber-600 text-bakeryDark font-semibold px-6 py-3 rounded-xl shadow-lg hover:bg-amber-500 transition-all">
+                        <i class="fa-solid fa-phone"></i> Call Us: 6205038791
+                    </a>
+                </div>
+            </div>
+
+            <div class="lg:col-span-6 flex justify-center">
+                <div class="relative w-full max-w-lg bg-bakeryDark border border-amber-900/40 rounded-3xl p-8 shadow-2xl space-y-6">
+                    <div class="flex items-center gap-4">
+                        <div class="w-16 h-16 rounded-2xl bg-amber-900/40 border border-amber-600/40 flex items-center justify-center text-amber-400 text-3xl">
+                            <i class="fa-solid fa-award"></i>
+                        </div>
+                        <div>
+                            <h4 class="font-serif text-xl font-semibold">Quality Guarantee</h4>
+                            <span class="text-xs text-amber-500">100% Veg • Fresh & Hygienic</span>
+                        </div>
+                    </div>
+                    <ul class="space-y-4 text-sm text-gray-300">
+                        <li class="flex items-start gap-3">
+                            <i class="fa-solid fa-check text-amber-400 mt-1"></i><span>Strictly 100% vegetarian preparations for all snacks and cakes.</span>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <i class="fa-solid fa-check text-amber-400 mt-1"></i><span>Baked fresh daily in small batches with pristine hygiene standards.</span>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <i class="fa-solid fa-check text-amber-400 mt-1"></i><span>Direct phone ordering at <strong>6205038791</strong> for quick doorstep delivery.</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="reviews" class="py-20 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
+        <div class="text-center max-w-3xl mx-auto space-y-4 mb-16">
+            <span class="text-amber-500 text-xs font-bold tracking-widest uppercase">Customer Love</span>
+            <h2 class="font-serif text-3xl sm:text-5xl font-bold">Har Occasion Ko Banaye Special</h2>
+            <p class="text-gray-300 font-light text-sm sm:text-base">
+                See what our delighted customers say about our cookies, brownies, and dry fruit cakes.
+            </p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <div class="bg-bakeryCard border border-amber-900/30 rounded-2xl p-8 space-y-4 relative">
+                <div class="flex text-amber-400 text-sm gap-1">
+                    <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                </div>
+                <p class="text-sm text-gray-300 italic">
+                    "The Dry Fruit Cake is loaded with almonds and cashews! So moist and flavorful. Perfect for gifting during festivals and family gatherings."
+                </p>
+                <div class="pt-4 border-t border-amber-900/20 flex items-center justify-between">
+                    <span class="font-serif font-semibold text-creamText">Sneha Gupta</span>
+                    <span class="text-xs text-gray-500">Verified Buyer</span>
+                </div>
+            </div>
+
+            <div class="bg-bakeryCard border border-amber-900/30 rounded-2xl p-8 space-y-4 relative">
+                <div class="flex text-amber-400 text-sm gap-1">
+                    <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                </div>
+                <p class="text-sm text-gray-300 italic">
+                    "Their Chocolate Brownies are out of this world! So fudgy and rich. Ordering directly via 6205038791 was super quick and easy."
+                </p>
+                <div class="pt-4 border-t border-amber-900/20 flex items-center justify-between">
+                    <span class="font-serif font-semibold text-creamText">Aman Kumar</span>
+                    <span class="text-xs text-gray-500">Verified Buyer</span>
+                </div>
+            </div>
+
+            <div class="bg-bakeryCard border border-amber-900/30 rounded-2xl p-8 space-y-4 relative">
+                <div class="flex text-amber-400 text-sm gap-1">
+                    <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                </div>
+                <p class="text-sm text-gray-300 italic">
+                    "We ordered Wheat Oats Cookies and Tuty Fruity Cakes for our family tea party. Everyone loved them! Truly 100% veg and fresh."
+                </p>
+                <div class="pt-4 border-t border-amber-900/20 flex items-center justify-between">
+                    <span class="font-serif font-semibold text-creamText">Sunita Mishra</span>
+                    <span class="text-xs text-gray-500">Verified Buyer</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div id="orderModal" class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-sm hidden">
+        <div class="bg-bakeryCard border border-amber-600/40 w-full max-w-lg rounded-3xl p-6 sm:p-8 relative shadow-2xl space-y-6">
+            <button onclick="closeOrderModal()" class="absolute top-6 right-6 text-gray-400 hover:text-white text-xl">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+
+            <div>
+                <span class="text-amber-500 text-xs font-bold tracking-widest uppercase">Quick Order Form</span>
+                <h3 class="font-serif text-2xl font-bold mt-1">Place Your Bake Order</h3>
+                <p class="text-xs text-gray-400 mt-1">Or call us directly at <a href="tel:6205038791" class="text-amber-400 font-bold">6205038791</a></p>
+            </div>
+
+            <form id="orderForm" onsubmit="handleOrderSubmit(event)" class="space-y-4">
+                <div>
+                    <label class="block text-xs font-medium text-gray-300 mb-1">Select Item & Size</label>
+                    <select id="modalItemSelect" class="w-full bg-bakeryDark border border-amber-900/50 rounded-xl px-4 py-3 text-sm text-creamText focus:outline-none focus:border-amber-500">
+                        <option value="Wheat Cookies (₹200 / 250gms)">Wheat Cookies - ₹200 (250gms)</option>
+                        <option value="Wheat Oats Cookies (₹240 / 250gms)">Wheat Oats Cookies - ₹240 (250gms)</option>
+                        <option value="Chocolate Cookies (₹280 / 250gms)">Chocolate Cookies - ₹280 (250gms)</option>
+                        <option value="Brownie (₹650/500g, ₹1200/1kg)">Brownie - ₹650 (500g) / ₹1200 (1kg)</option>
+                        <option value="Tuty Fruity Cake (₹550/500g, ₹1050/1kg)">Tuty Fruity Cake - ₹550 (500g) / ₹1050 (1kg)</option>
+                        <option value="Dry Fruit Cake (₹600/500g, ₹1150/1kg)">Dry Fruit Cake - ₹600 (500g) / ₹1150 (1kg)</option>
+                    </select>
+                </div>
+
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                    <div>
+                        <label class="block text-xs font-medium text-gray-300 mb-1">Your Name</label>
+                        <input type="text" required placeholder="Enter full name" class="w-full bg-bakeryDark border border-amber-900/50 rounded-xl px-4 py-3 text-sm text-creamText focus:outline-none focus:border-amber-500">
+                    </div>
+                    <div>
+                        <label class="block text-xs font-medium text-gray-300 mb-1">Phone Number</label>
+                        <input type="tel" required placeholder="10-digit mobile number" class="w-full bg-bakeryDark border border-amber-900/50 rounded-xl px-4 py-3 text-sm text-creamText focus:outline-none focus:border-amber-500">
+                    </div>
+                </div>
+
+                <div>
+                    <label class="block text-xs font-medium text-gray-300 mb-1">Delivery Address</label>
+                    <textarea rows="3" required placeholder="House no, street, locality, city..." class="w-full bg-bakeryDark border border-amber-900/50 rounded-xl px-4 py-3 text-sm text-creamText focus:outline-none focus:border-amber-500"></textarea>
+                </div>
+
+                <button type="submit" class="w-full bg-gradient-to-r from-amber-600 to-amber-500 hover:from-amber-500 hover:to-amber-400 text-bakeryDark font-bold py-3.5 rounded-xl shadow-lg transition-all">
+                    Confirm & Send Order
+                </button>
+            </form>
+
+            <div id="orderSuccessMsg" class="hidden text-center space-y-3 py-6">
+                <div class="w-16 h-16 mx-auto rounded-full bg-emerald-900/40 border border-emerald-500/40 flex items-center justify-center text-emerald-400 text-2xl">
+                    <i class="fa-solid fa-check"></i>
+                </div>
+                <h4 class="font-serif text-xl font-bold text-creamText">Order Placed Successfully!</h4>
+                <p class="text-xs text-gray-300">Thank you for ordering from Desi Oven. We will call you shortly on your number to confirm delivery.</p>
+                <div class="pt-2">
+                    <a href="tel:6205038791" class="inline-block bg-amber-600 text-bakeryDark text-xs font-semibold px-6 py-2.5 rounded-lg">Call Us Directly: 6205038791</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer class="bg-bakeryCard border-t border-amber-900/30 py-12 px-4 sm:px-6 lg:px-8">
+        <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-4 gap-8 mb-8">
+            <div class="space-y-4 md:col-span-2">
+                <div class="flex items-center gap-3">
+                    <div class="w-8 h-8 rounded-full bg-amber-600 flex items-center justify-center text-bakeryDark">
+                        <i class="fa-solid fa-fire text-sm"></i>
+                    </div>
+                    <span class="font-serif text-xl font-bold gold-gradient-text">DESI OVEN</span>
+                </div>
+                <p class="text-sm text-gray-400 max-w-sm">
+                    Desi Swad, Har Bite Mein Mithaas. Har Occasion Ko Banaye Special with 100% veg, fresh, and hygienic bakes.
+                </p>
+                <div class="flex items-center gap-3 text-amber-500 text-lg">
+                    <a href="#" class="hover:text-amber-400"><i class="fa-brands fa-instagram"></i></a>
+                    <a href="#" class="hover:text-amber-400"><i class="fa-brands fa-facebook"></i></a>
+                    <a href="https://wa.me/916205038791" class="hover:text-amber-400"><i class="fa-brands fa-whatsapp"></i></a>
+                </div>
+            </div>
+
+            <div>
+                <h4 class="font-serif font-semibold text-creamText mb-4">Quick Links</h4>
+                <ul class="space-y-2 text-sm text-gray-400">
+                    <li><a href="#about" class="hover:text-goldAccent">Our Story</a></li>
+                    <li><a href="#menu" class="hover:text-goldAccent">Artisanal Menu</a></li>
+                    <li><a href="#reviews" class="hover:text-goldAccent">Customer Reviews</a></li>
+                </ul>
+            </div>
+
+            <div>
+                <h4 class="font-serif font-semibold text-creamText mb-4">Contact & Orders</h4>
+                <ul class="space-y-2 text-sm text-gray-400">
+                    <li><a href="tel:6205038791" class="hover:text-amber-400"><i class="fa-solid fa-phone mr-2 text-amber-500"></i> 6205038791</a></li>
+                    <li><i class="fa-solid fa-shield-heart mr-2 text-amber-500"></i> 100% Veg • Fresh & Hygienic</li>
+                    <li><i class="fa-solid fa-clock mr-2 text-amber-500"></i> Open Daily: 7 AM – 9 PM</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="max-w-7xl mx-auto pt-8 border-t border-amber-900/20 text-center text-xs text-gray-500">
+            &copy; 2026 Desi Oven Bakery. All rights reserved. Baked with love • Desi at heart. Contact: 6205038791
+        </div>
+    </footer>
+
+    <script>
+        function toggleMobileMenu() {
+            const menu = document.getElementById('mobileMenu');
+            const icon = document.getElementById('menuIcon');
+            menu.classList.toggle('hidden');
+            if(menu.classList.contains('hidden')) {
+                icon.className = 'fa-solid fa-bars';
+            } else {
+                icon.className = 'fa-solid fa-xmark';
+            }
+        }
+
+        function filterMenu(category) {
+            const buttons = document.querySelectorAll('.menu-btn');
+            buttons.forEach(btn => {
+                btn.classList.remove('bg-amber-600', 'text-bakeryDark');
+                btn.classList.add('bg-bakeryCard', 'border', 'border-amber-900/40', 'text-creamText');
+            });
+            
+            event.target.classList.remove('bg-bakeryCard', 'border', 'border-amber-900/40', 'text-creamText');
+            event.target.classList.add('bg-amber-600', 'text-bakeryDark');
+
+            const items = document.querySelectorAll('.menu-item');
+            items.forEach(item => {
+                if (category === 'all' || item.dataset.category === category) {
+                    item.style.display = 'flex';
+                } else {
+                    item.style.display = 'none';
+                }
+            });
+        }
+
+        function openOrderModal(itemName = '') {
+            const modal = document.getElementById('orderModal');
+            modal.classList.remove('hidden');
+            document.getElementById('orderForm').classList.remove('hidden');
+            document.getElementById('orderSuccessMsg').classList.add('hidden');
+            
+            if(itemName) {
+                const select = document.getElementById('modalItemSelect');
+                for(let i=0; i<select.options.length; i++) {
+                    if(select.options[i].value.includes(itemName.split(' ')[0])) {
+                        select.selectedIndex = i;
+                        break;
+                    }
+                }
+            }
+        }
+
+        function closeOrderModal() {
+            const modal = document.getElementById('orderModal');
+            modal.classList.add('hidden');
+        }
+
+        function handleOrderSubmit(e) {
+            e.preventDefault();
+            document.getElementById('orderForm').classList.add('hidden');
+            document.getElementById('orderSuccessMsg').classList.remove('hidden');
+        }
+
+        window.onclick = function(event) {
+            const modal = document.getElementById('orderModal');
+            if (event.target === modal) {
+                closeOrderModal();
+            }
+        }
+    </script>
+</body>
+</html>
